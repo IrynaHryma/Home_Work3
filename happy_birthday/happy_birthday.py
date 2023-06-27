@@ -39,5 +39,5 @@ def check_employees(users: list) -> None:
 
 
 if __name__ == "__main__":
-    print(check_employees(users))
-    print(check_date())
+    for key, value in check_employees(users).items():
+        print(f"{key} is the birthday of{value}")
