@@ -11,7 +11,7 @@ users = [
 
 def check_date() -> tuple[datetime.date, datetime.date]:
     current_date = datetime.now()
-    start_day = current_date - timedelta(days=current_date.weekday())
+    start_day = current_date - timedelta(days=5-current_date.weekday())
     end_day = start_day + timedelta(days=6)
     return start_day.date(), end_day.date()
 
@@ -39,5 +39,10 @@ def check_employees(users: list) -> None:
 
 
 if __name__ == "__main__":
-    for key, value in check_employees(users).items():
-        print(f"{key} is the birthday of{value}")
+    birthdays = check_employees(users)
+    for day, names in birthdays.items():
+        if day == "Monday":
+            print(f"{day} is the birthday of {','.join(names)}")
+        else:
+            for name in names:
+                print(f"{day} is the birthday of {name}")
